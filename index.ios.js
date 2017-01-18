@@ -5,7 +5,10 @@
  */
 
 import React, { Component } from 'react';
-import {Container, Title} from 'native-base';
+import { Container, Title } from 'native-base';
+import { Actions, Scene, Router } from 'react-native-router-flux';
+import CalendarView from './src/views/CalendarView';
+import Home from './src/views/Home';
 
 import {
   AppRegistry,
@@ -17,11 +20,10 @@ import {
 export default class LunsjListeApp extends Component {
   render() {
     return (
-      <View>
-       <Title style={{marginLeft: 80, marginTop: 100}}>
-        Hello WOrkd!
-       </Title>
-      </View>
+      <Router>
+        <Scene key="Calendar" component={CalendarView} title="Calendar" />      
+        <Scene key="Home" component={Home} title="Home" />
+      </Router>
     );
   }
 }
