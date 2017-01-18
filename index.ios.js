@@ -5,6 +5,8 @@
  */
 
 import React, { Component } from 'react';
+import {Container, Title} from 'native-base';
+
 import {
   AppRegistry,
   StyleSheet,
@@ -15,17 +17,10 @@ import {
 export default class LunsjListeApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View>
+       <Title style={{marginLeft: 80, marginTop: 100}}>
+        Hello WOrkd!
+       </Title>
       </View>
     );
   }
