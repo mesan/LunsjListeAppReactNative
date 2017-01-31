@@ -12,6 +12,7 @@ export const signUpForLunch = (selectedDate, user) => {
 
     return fetch(url, {
         method: 'POST',
+        // TODO send med riktig user fra args
         body: JSON.stringify({user: true})
     }).then(response => {
         return response.ok;

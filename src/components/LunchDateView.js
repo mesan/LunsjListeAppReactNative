@@ -6,7 +6,7 @@ export default class LunchDateView extends Component {
     handleSignup(e) {
         e.preventDefault();
         console.debug('Signed up!');
-        this.props.signUpForLunch(this.props.selectedDate).then(result => {
+        this.props.signUpForLunch(this.props.selectedDate, 'idarv').then(result => {
             console.debug('result: ', result);
         }).catch(() => {
             console.debug('Error while trying to sign up');
@@ -40,7 +40,7 @@ export default class LunchDateView extends Component {
                         </Text>
                     </CardItem>
                 </Card>
-                <Button block style={styles.button}>Meld meg på!</Button>
+                <Button block style={styles.button} onPress={e => this.handleSignup(e)}>Meld meg på!</Button>
             </View>
         )
     }
