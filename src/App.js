@@ -5,8 +5,8 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import rootReducer from './reducers';
-import CalendarView from './containers/Calendar';
-import Home from './views/Home';
+import Calendar from './containers/Calendar';
+import Home from './containers/Home';
 
 import {
   AppRegistry,
@@ -24,7 +24,7 @@ export default class LunsjListeApp extends Component {
       <Provider store={store}>
         <Router>
             <Scene key="Home" component={Home} title="Home" />
-            <Scene key="Calendar" component={CalendarView} title="Calendar" />
+            <Scene key="Calendar" component={Calendar} title="Calendar" />
         </Router>
       </Provider>
     );

@@ -3,16 +3,26 @@ import {View, Button, Card, CardItem, Text} from 'native-base';
 import {StyleSheet} from 'react-native';
 
 export default class LunchDateView extends Component {
+    handleSignup(e) {
+        e.preventDefault();
+        console.debug('Signed up!');
+        this.props.signUpForLunch(this.props.selectedDate).then(result => {
+            console.debug('result: ', result);
+        }).catch(() => {
+            console.debug('Error while trying to sign up');
+        });
+    }
+
     render() {
         console.log("lunchdateview");
         return (
             <View>
                 <Text/>
                 <Text style={styles.date_header}>
-                    27.
+                    {this.props.selectedDate.getDate()}
                 </Text>
                 <Text style={styles.date_header}>
-                    Januar
+                    {this.props.selectedDate.toLocaleString("nb", {month: "long"})}
                 </Text>
                 <Card>
                     <CardItem>
