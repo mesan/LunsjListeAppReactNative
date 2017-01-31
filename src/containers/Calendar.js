@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { setSelectedDay } from '../actionCreators';
+import { signUpForLunch } from '../services/LunchApiService';
 import CalendarView from '../views/CalendarView';
 
 const mapStateToProps = (state) => {
@@ -10,7 +11,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setSelectedDate: selectedDate => dispatch(setSelectedDay(selectedDate))
+        setSelectedDate: selectedDate => dispatch(setSelectedDay(selectedDate)),
+        signUpForLunch: signUpForLunch
     }
 };
 
