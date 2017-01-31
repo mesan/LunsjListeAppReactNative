@@ -21,8 +21,8 @@ export default class LunsjListeApp extends Component {
   render() {
     return (
       <Router>
-        <Scene key="Calendar" component={CalendarView} title="Calendar" />      
         <Scene key="Home" component={Home} title="Home" />
+        <Scene key="Calendar" component={CalendarView} title="Calendar" />
       </Router>
     );
   }
