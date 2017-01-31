@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Title } from 'native-base';
 import { Actions, Scene, Router } from 'react-native-router-flux';
-import CalendarView from './views/CalendarView';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import rootReducer from './reducers';
+import CalendarView from './containers/Calendar';
 import Home from './views/Home';
 
 import {
@@ -11,13 +15,17 @@ import {
   View
 } from 'react-native';
 
+const store = createStore(rootReducer);
+
 export default class LunsjListeApp extends Component {
   render() {
     return (
-      <Router>
-        <Scene key="Calendar" component={CalendarView} title="Calendar" />      
-        <Scene key="Home" component={Home} title="Home" />
-      </Router>
+      <Provider store={store}>
+        <Router>
+            <Scene key="Calendar" component={CalendarView} title="Calendar" />      
+            <Scene key="Home" component={Home} title="Home" />
+        </Router>
+      </Provider>
     );
   }
 }
