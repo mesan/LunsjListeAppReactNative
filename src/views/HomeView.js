@@ -16,7 +16,12 @@ export default class Home extends Component {
             <Container>
                 <Header />
                 <Content>
-                    <LunchDateView selectedDate={this.props.selectedDate} signUpForLunch={this.props.signUpForLunch} />
+                    <LunchDateView
+                        selectedDate={this.props.selectedDate}
+                        signUpForLunch={this.props.signUpForLunch}
+                        fetchUserSignedUpForLunch={this.props.fetchUserSignedUpForLunch}
+                        setSignedUp={this.props.setSignedUp}
+                        isSignedUpForLunch={this.props.isSignedUpForLunch}/>
                 </Content>
             </Container>
         )

@@ -3,13 +3,18 @@ import {View, Button, Card, CardItem, Text} from 'native-base';
 import {StyleSheet} from 'react-native';
 
 export default class LunchDateView extends Component {
+    componentDidMount(){
+        this.props.setSignedUp(true);
+    }
+
     handleSignup(e) {
         e.preventDefault();
         console.debug('Signed up!');
         this.props.signUpForLunch(this.props.selectedDate, 'idarv').then(result => {
+            this.props.setSignedUp(result ? true : false);
             console.debug('result: ', result);
-        }).catch(() => {
-            console.debug('Error while trying to sign up');
+        }).catch((e) => {
+            console.debug('Error while trying to sign up : ',e);
         });
     }
 
@@ -40,7 +45,7 @@ export default class LunchDateView extends Component {
                         </Text>
                     </CardItem>
                 </Card>
-                <Button block style={styles.button} onPress={e => this.handleSignup(e)}>Meld meg på!</Button>
+                <Button block style={styles.button} onPress={e => this.handleSignup(e)}>Meld meg {this.props.isSignedUpForLunch ? 'av' : 'på'}!</Button>
             </View>
         )
     }

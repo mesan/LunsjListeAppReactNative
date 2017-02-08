@@ -1,0 +1,1 @@
+export const IS_SIGNED_UP_FOR_LUNCH = 'IS_SIGNED_UP_FOR_LUNCH';
