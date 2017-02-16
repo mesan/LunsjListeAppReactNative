@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dimensions, Text, StyleSheet } from 'react-native';
 import { Container, Title, Content, Header, Button } from 'native-base';
 import CalendarPicker from 'react-native-calendar-picker';
+import {Actions} from 'react-native-router-flux'
 
 export default class CalendarView extends Component {
     handleSignup(e) {
@@ -24,7 +25,7 @@ export default class CalendarView extends Component {
                         screenWidth={Dimensions.get('window').width}
                         onDateChange={date => this.props.setSelectedDate(date)}
                         selectedDayColor={'#5ce6F0'} />
-                    <Button onPress={e => this.handleSignup(e)}>Meld med på</Button>                    
+                    <Button onPress={Actions.Home}>Gå til dato</Button>
                 </Content>
             </Container>
         )
