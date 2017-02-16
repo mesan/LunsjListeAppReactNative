@@ -7,12 +7,10 @@ const mapStateToProps = state => ({
     selectedDate: state.calendar.selectedDate
 });
 
-const mapDispatchToProps = dispatch => (
-    {
+const mapDispatchToProps = dispatch => ({
         setSelectedDate: selectedDate => dispatch(setSelectedDay(selectedDate)),
-        signUpForLunch: signUpForLunch
-    }
-);
+        signUpForLunch
+});
 
 export default connect(
     mapStateToProps,

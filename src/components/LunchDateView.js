@@ -4,7 +4,6 @@ import {StyleSheet} from 'react-native';
 
 export default class LunchDateView extends Component {
     componentDidMount(){
-        console.log('componentdidmount');
         this.props.fetchUserSignedUpForLunch(new Date(), 'idarv').then(result => {
             this.props.setSignedUp(result);
         }).catch(e => {
@@ -14,10 +13,7 @@ export default class LunchDateView extends Component {
 
     handleSignup(e) {
         e.preventDefault();
-        console.debug('Signed up!');
-        this.props.signUpForLunch(this.props.selectedDate, 'idarv', !this.props.isSignedUpForLunch).then(result => {
-            // this.props.setSignedUp(result ? true : false);
-            // console.debug('result: ', result);
+        this.props.signUpForLunch(this.props.selectedDate, 'idarv', !this.props.isSignedUpForLunch).then(() => {
             this.props.fetchUserSignedUpForLunch(new Date(), 'idarv').then(result => {
                 this.props.setSignedUp(result);
             }).catch(e => {
@@ -29,9 +25,9 @@ export default class LunchDateView extends Component {
     }
 
     render() {
-        console.log("lunchdateview");
         const {
-            selectedDate
+            selectedDate,
+            isSignedUpForLunch
         } = this.props;
         return (
             <View>
@@ -58,11 +54,15 @@ export default class LunchDateView extends Component {
                         </Text>
                     </CardItem>
                 </Card>
-                <Button block style={this.props.isSignedUpForLunch ? styles.buttonRed : styles.buttonGreen } onPress={e => this.handleSignup(e)}>Meld meg {this.props.isSignedUpForLunch ? 'av' : 'på'}!</Button>
+                <Button block style={getButtonStyle(isSignedUpForLunch)} onPress={e => this.handleSignup(e)}>Meld meg {isSignedUpForLunch ? 'av' : 'på'}!</Button>
             </View>
         )
     }
 }
+
+const getButtonStyle = isSignedUpForLunch => {
+    return isSignedUpForLunch ? styles.buttonRed : styles.buttonGreen
+};
 
 const styles = StyleSheet.create({
     buttonGreen: {

@@ -4,14 +4,14 @@ import { setSignedUp} from '../actionCreators/lunch-signup'
 import { signUpForLunch, fetchUserSignedUpForLunch } from '../services/LunchApiService';
 import HomeView from '../views/HomeView';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         selectedDate: state.calendar.selectedDate,
         isSignedUpForLunch: state.lunchSignup.isSignedUpForLunch
     }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
         setSelectedDate: selectedDate => dispatch(setSelectedDay(selectedDate)),
         signUpForLunch,
