@@ -14,8 +14,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setSelectedDate: selectedDate => dispatch(setSelectedDay(selectedDate)),
-        signUpForLunch: signUpForLunch,
-        fetchUserSignedUpForLunch: fetchUserSignedUpForLunch,
+        signUpForLunch,
+        fetchUserSignedUpForLunch,
         setSignedUp: signedUpForLunch => dispatch(setSignedUp(signedUpForLunch))
     }
 };

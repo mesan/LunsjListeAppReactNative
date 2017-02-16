@@ -20,6 +20,7 @@ export default class Home extends Component {
                         selectedDate={this.props.selectedDate}
                         signUpForLunch={this.props.signUpForLunch}
                         setSignedUp={this.props.setSignedUp}
+                        fetchUserSignedUpForLunch={this.props.fetchUserSignedUpForLunch}
                         isSignedUpForLunch={this.props.isSignedUpForLunch}/>
                 </Content>
             </Container>

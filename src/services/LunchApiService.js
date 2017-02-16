@@ -9,12 +9,15 @@ export const fetchUserSignedUpForLunch = (selectedDate, user) => {
     return fetch(url, {
         method: 'GET'
     }).then(response => {
-        //this.state.setSignedUp(response.ok);
-        return response.ok;
+        if(!response.ok){
+            return false;
+        }
+
+        return extractUserIsSignedUp(response);
     });
 };
 
-export const signUpForLunch = (selectedDate, user) => {
+export const signUpForLunch = (selectedDate, user, status) => {
     validateInput(selectedDate, user);
 
     const url = buildUrl(selectedDate, user);
@@ -22,8 +25,7 @@ export const signUpForLunch = (selectedDate, user) => {
 
     return fetch(url, {
         method: 'PUT',
-        // TODO set signupforlunch based on past status
-        body: generateSignUpBody(true)
+        body: generateSignUpBody(status)
     }).then(response => {
         return response.ok;
     });
@@ -39,20 +41,24 @@ const buildUrl = (selectedDate, user) => {
         + '.json';
 };
 
-const generateSignUpBody = (signedUpForLunch) => {
+const generateSignUpBody = signedUpForLunch => {
     return JSON.stringify({
         signedUpForLunch: signedUpForLunch
     });
 };
 
-const getFormattedMonth = (selectedDate) => {
+const getFormattedMonth = selectedDate => {
     const month = selectedDate.getMonth() + 1; // Months are 0 - 11
     return month < 10 ? "0" + month : month
 };
 
-const getFormattedDay = (selectedDate) => {
+const getFormattedDay = selectedDate => {
     const day = selectedDate.getDate();
     return day < 10 ? "0" + day : day;
+};
+
+const extractUserIsSignedUp = response => {
+    return JSON.parse(response._bodyText).signedUpForLunch;
 };
 
 const validateInput = (selectedDate, user) => {

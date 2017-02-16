@@ -4,18 +4,27 @@ import {StyleSheet} from 'react-native';
 
 export default class LunchDateView extends Component {
     componentDidMount(){
-        // TODO change to fetch from firebase somehow
-        this.props.setSignedUp(false);
+        console.log('componentdidmount');
+        this.props.fetchUserSignedUpForLunch(new Date(), 'idarv').then(result => {
+            this.props.setSignedUp(result);
+        }).catch(e => {
+            console.debug('Error while checking if signed up: ', e)
+        });
     }
 
     handleSignup(e) {
         e.preventDefault();
         console.debug('Signed up!');
-        this.props.signUpForLunch(this.props.selectedDate, 'idarv').then(result => {
-            this.props.setSignedUp(result ? true : false);
-            console.debug('result: ', result);
+        this.props.signUpForLunch(this.props.selectedDate, 'idarv', !this.props.isSignedUpForLunch).then(result => {
+            // this.props.setSignedUp(result ? true : false);
+            // console.debug('result: ', result);
+            this.props.fetchUserSignedUpForLunch(new Date(), 'idarv').then(result => {
+                this.props.setSignedUp(result);
+            }).catch(e => {
+                console.debug('Error while checking if signed up: ', e)
+            });
         }).catch((e) => {
-            console.debug('Error while trying to sign up : ',e);
+            console.debug('Error while trying to sign up : ', e);
         });
     }
 
