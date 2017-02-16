@@ -58,17 +58,22 @@ export default class LunchDateView extends Component {
                         </Text>
                     </CardItem>
                 </Card>
-                <Button block style={styles.button} onPress={e => this.handleSignup(e)}>Meld meg {this.props.isSignedUpForLunch ? 'av' : 'på'}!</Button>
+                <Button block style={this.props.isSignedUpForLunch ? styles.buttonRed : styles.buttonGreen } onPress={e => this.handleSignup(e)}>Meld meg {this.props.isSignedUpForLunch ? 'av' : 'på'}!</Button>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    button: {
+    buttonGreen: {
         height: 50,
         marginTop: 300,
-        backgroundColor: '#56e6f0'
+        backgroundColor: '#73D6C5'
+    },
+    buttonRed: {
+        height: 50,
+        marginTop: 300,
+        backgroundColor: '#D67373'
     },
     text: {
         fontWeight: 'bold'
