@@ -1,4 +1,4 @@
-import { SET_SELECTED_DAY } from '../actionTypes';
+import { SET_SELECTED_DAY } from '../actionTypes/index';
 
 export const setSelectedDay = (selectedDate) => ({
     type: SET_SELECTED_DAY,

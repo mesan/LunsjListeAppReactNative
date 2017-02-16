@@ -9,7 +9,7 @@ export default (state = defaultState, action) => {
     switch (action.type) {
         case SET_SELECTED_DAY: {
             temp.selectedDate = action.selectedDate;
-            console.debug("selectedDate: ", temp.selectedDate);    
+            console.debug("selectedDate: ", temp.selectedDate);
             return temp;
         }
         default: return temp;

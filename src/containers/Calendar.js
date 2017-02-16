@@ -1,20 +1,18 @@
 import { connect } from 'react-redux';
-import { setSelectedDay } from '../actionCreators';
+import { setSelectedDay } from '../actionCreators/index';
 import { signUpForLunch } from '../services/LunchApiService';
 import CalendarView from '../views/CalendarView';
 
-const mapStateToProps = (state) => {
-    return {
-        selectedDate: state.calendar.selectedDate
-    }
-};
+const mapStateToProps = state => ({
+    selectedDate: state.calendar.selectedDate
+});
 
-const mapDispatchToProps = (dispatch) => {
-    return {
+const mapDispatchToProps = dispatch => (
+    {
         setSelectedDate: selectedDate => dispatch(setSelectedDay(selectedDate)),
         signUpForLunch: signUpForLunch
     }
-};
+);
 
 export default connect(
     mapStateToProps,

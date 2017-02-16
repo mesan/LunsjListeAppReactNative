@@ -4,7 +4,8 @@ import {StyleSheet} from 'react-native';
 
 export default class LunchDateView extends Component {
     componentDidMount(){
-        this.props.setSignedUp(true);
+        // TODO change to fetch from firebase somehow
+        this.props.setSignedUp(false);
     }
 
     handleSignup(e) {
@@ -20,14 +21,17 @@ export default class LunchDateView extends Component {
 
     render() {
         console.log("lunchdateview");
+        const {
+            selectedDate
+        } = this.props;
         return (
             <View>
                 <Text/>
                 <Text style={styles.date_header}>
-                    {this.props.selectedDate.getDate()}
+                    {selectedDate.getDate()}
                 </Text>
                 <Text style={styles.date_header}>
-                    {this.props.selectedDate.toLocaleString("nb", {month: "long"})}
+                    {selectedDate.toLocaleString("nb", {month: "long"})}
                 </Text>
                 <Card>
                     <CardItem>

@@ -19,7 +19,6 @@ export default class Home extends Component {
                     <LunchDateView
                         selectedDate={this.props.selectedDate}
                         signUpForLunch={this.props.signUpForLunch}
-                        fetchUserSignedUpForLunch={this.props.fetchUserSignedUpForLunch}
                         setSignedUp={this.props.setSignedUp}
                         isSignedUpForLunch={this.props.isSignedUpForLunch}/>
                 </Content>
