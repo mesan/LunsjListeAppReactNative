@@ -4,7 +4,6 @@ import { Container, Title, Content, Header, Button } from 'native-base';
 import CalendarPicker from 'react-native-calendar-picker';
 
 export default class CalendarView extends Component {
-
     handleSignup(e) {
         e.preventDefault();
         console.debug('Signed up!');
