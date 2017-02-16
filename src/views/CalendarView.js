@@ -5,15 +5,15 @@ import CalendarPicker from 'react-native-calendar-picker';
 import {Actions} from 'react-native-router-flux'
 
 export default class CalendarView extends Component {
-    handleSignup(e) {
-        e.preventDefault();
-        console.debug('Signed up!');
-        this.props.signUpForLunch(this.props.selectedDate).then(result => {
-            console.debug('result: ', result);
-        }).catch(() => {
-            console.debug('Error while trying to sign up');
-        });
-    }
+    // handleSignup(e) {
+    //     e.preventDefault();
+    //     console.debug('Signed up!');
+    //     this.props.signUpForLunch(this.props.selectedDate).then(result => {
+    //         console.debug('result: ', result);
+    //     }).catch(() => {
+    //         console.debug('Error while trying to sign up');
+    //     });
+    // }
 
     render() {
         return (
@@ -23,9 +23,9 @@ export default class CalendarView extends Component {
                     <CalendarPicker 
                         selectedDate={this.props.selectedDate}
                         screenWidth={Dimensions.get('window').width}
-                        onDateChange={date => this.props.setSelectedDate(date)}
+                        onDateChange={date => {this.props.setSelectedDate(date); Actions.Home()}}
                         selectedDayColor={'#5ce6F0'} />
-                    <Button onPress={Actions.Home}>Gå til dato</Button>
+                    {/*<Button onPress={Actions.Home}>Gå til dato</Button>*/}
                 </Content>
             </Container>
         )
