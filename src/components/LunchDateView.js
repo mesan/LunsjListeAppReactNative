@@ -15,9 +15,8 @@ export default class LunchDateView extends Component {
         e.preventDefault();
         this.props.signUpForLunch(this.props.selectedDate, 'idarv', !this.props.isSignedUpForLunch).then(() => {
             this.props.fetchUserSignedUpForLunch(this.props.selectedDate, 'idarv').then(result => {
-                this.props.setSignedUp(result);
-            }).catch(e => {
-                console.debug('Error while checking if signed up: ', e)
+                console.debug("ER JEG ET RESULTAT? JA: ", result);
+                this.props.setSignedUp(result.ok);
             });
         }).catch((e) => {
             console.debug('Error while trying to sign up : ', e);
