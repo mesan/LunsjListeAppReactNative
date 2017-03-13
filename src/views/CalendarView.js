@@ -12,7 +12,7 @@ export default class CalendarView extends Component {
 
     handleDateChange(date) {
         this.props.setSelectedDate(date);
-        Actions.Home(); // will it work ?
+        Actions.Home();
     }
 
     render() {
