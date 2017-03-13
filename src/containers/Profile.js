@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import ProfileView from '../views/ProfileView';
 
 const mapStateToProps = (state) => {
+	console.log(state);
 	return {
-		user: state.user
+		user: state.profile.user,
+		text: state.profile.text
 	}
 };
 

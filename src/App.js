@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 
 import rootReducer from './reducers';
 import CalendarView from './containers/Calendar';
+import Profile from './containers/Profile';
 import Home from './views/Home';
 
 import {
@@ -25,6 +26,7 @@ export default class LunsjListeApp extends Component {
         <Router>
             <Scene key="Home" component={Home} title="Home" />
             <Scene key="Calendar" component={CalendarView} title="Calendar" />
+            <Scene key="Profile" component={Profile} title="Profile" initial={true} />
         </Router>
       </Provider>
     );

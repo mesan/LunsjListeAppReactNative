@@ -1,36 +1,57 @@
 import React, { Component } from 'react';
-import { Dimensions, Text, StyleSheet } from 'react-native';
-import { Container, Title, Content, Header, Button } from 'native-base';
+import {View, Button, Card, CardItem, Text} from 'native-base';
+import {StyleSheet, Image, TextInput} from 'react-native';
 
 export default class ProfileView extends Component {
-
-	handleSignup(e) {
-		e.preventDefault();
-		console.debug('Signed up!');
-		this.props.signUpForLunch(this.props.selectedDate).then(result => {
-			console.debug('result: ', result);
-		}).catch(() => {
-			console.debug('Error while trying to sign up');
-		});
-	}
-
 	render() {
 		return (
-			<Container>
-				<Header />
-				<Content>
-					<Image source={{uri: 'https://i.chzbgr.com/full/7345954048/h7E2C65F9/'}} />
-					<Text>
-					</Text>
-
-
-					<Button onPress={e => this.handleSignup(e)}>Meld med på</Button>
-				</Content>
-			</Container>
+			<View>
+				<Image style={styles.image} source={{uri: 'https://s3-eu-west-1.amazonaws.com/faghelg/'
+															+ this.props.user.username + '.png'}}/>
+				<Text style={styles.profile_header}>
+					{this.props.user.fullName}
+				</Text>
+				<Card>
+					<CardItem>
+						<Text style={styles.text}>
+							Allergier:
+						</Text>
+						<Text>
+							- Paprika
+						</Text>
+						<Text>
+							- Laktose
+						</Text>
+						<Text>
+							- Kokt/stekt fisk (blæ)
+						</Text>
+					</CardItem>
+				</Card>
+				<Button block style={styles.button}>Lagre</Button>
+			</View>
 		)
 	}
 }
 
 const styles = StyleSheet.create({
-
+	button: {
+		height: 50,
+		backgroundColor: '#3a5072'
+	},
+	text: {
+		fontWeight: 'bold'
+	},
+	profile_header: {
+		justifyContent: 'center',
+		alignSelf: 'center',
+		fontSize: 30,
+		lineHeight: 40
+	},
+	image: {
+		height: 150,
+		borderRadius: 75,
+		width: 150,
+		marginTop: 50,
+		alignSelf: 'center'
+	}
 });
