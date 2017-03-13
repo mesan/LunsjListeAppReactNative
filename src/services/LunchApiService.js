@@ -1,4 +1,29 @@
-import {API_BASE_URL} from 'react-native-dotenv';
+import {API_BASE_URL, AUTH_SERVICE_URL} from 'react-native-dotenv';
+
+export const login = (email, password) => {
+    return fetch(AUTH_SERVICE_URL + '/authenticate', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => {
+        if (!response || !response.ok) {
+            throw new Error('response was invalid', response);
+        }
+        return response.json();
+    })
+    .then(json => json.token)
+    .catch(e => {
+        console.error('failed to login and get JWT', e);        
+        return;
+    });
+};
 
 export const fetchUserSignedUpForLunch = (selectedDate, user) => {
     validateInput(selectedDate, user);

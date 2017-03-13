@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Container, Title } from 'native-base';
 import { Actions, Scene, Router } from 'react-native-router-flux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 
 import rootReducer from './reducers';
 import Calendar from './containers/Calendar';
 import Home from './containers/Home';
+import Login from './containers/Login';
 
 import {
   AppRegistry,
@@ -15,7 +17,8 @@ import {
   View
 } from 'react-native';
 
-const store = createStore(rootReducer);
+const logger = createLogger();
+const store = createStore(rootReducer, applyMiddleware(logger));
 
 export default class LunsjListeApp extends Component {
   render() {
@@ -23,6 +26,7 @@ export default class LunsjListeApp extends Component {
     return (
       <Provider store={store}>
         <Router>
+            <Scene key="Login" component={Login} title="Login" initial={true} />
             <Scene key="Home" component={Home} title="Home" />
             <Scene key="Calendar" component={Calendar} title="Calendar" />
         </Router>
