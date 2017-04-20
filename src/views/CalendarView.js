@@ -18,7 +18,6 @@ export default class CalendarView extends Component {
     render() {
         return (
             <Container>
-                <Header />
                 <Content>
                     <CalendarPicker 
                         selectedDate={this.props.selectedDate}
