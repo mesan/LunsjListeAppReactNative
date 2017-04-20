@@ -58,8 +58,6 @@ const getFormattedDay = selectedDate => {
 };
 
 const extractUserIsSignedUp = response => {
-    console.log('resp', response);
-    console.log("before extract: " + JSON.parse(response._bodyText).signedUpForLunch);
     return JSON.parse(response._bodyText).signedUpForLunch;
 };
 
