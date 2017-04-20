@@ -25,9 +25,9 @@ export default class LunsjListeApp extends Component {
     return (
       <Provider store={store}>
         <Router>
-            <Scene key="Login" component={Login} title="Login" initial={true} />
-            <Scene key="Home" component={Home} title="Home" />
-            <Scene key="Calendar" component={Calendar} title="Calendar" renderBackButton={() => (null)} />
+          <Scene key="Login" component={Login} title="Login" initial={true} />
+          <Scene key="Home" component={Home} title="Home" />
+          <Scene key="Calendar" component={Calendar} title="Calendar" renderBackButton={() => (null)} />
         </Router>
       </Provider>
     );
