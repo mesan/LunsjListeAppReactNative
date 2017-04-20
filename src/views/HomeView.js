@@ -7,10 +7,6 @@ import {
 import LunchDateView from '../components/LunchDateView';
 
 export default class Home extends Component {
-    componentDidMount(){
-        this.props.setSelectedDate(new Date());
-    }
-
     render() {
         return (
             <Container>

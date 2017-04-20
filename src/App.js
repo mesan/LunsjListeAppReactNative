@@ -19,12 +19,11 @@ const store = createStore(rootReducer);
 
 export default class LunsjListeApp extends Component {
   render() {
-    console.log('luncjlisteappppp');
     return (
       <Provider store={store}>
         <Router>
-            <Scene key="Home" component={Home} title="Home" />
             <Scene key="Calendar" component={Calendar} title="Calendar" />
+            <Scene key="Home" component={Home} title="Home" />
         </Router>
       </Provider>
     );
