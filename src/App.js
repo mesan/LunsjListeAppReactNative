@@ -3,7 +3,7 @@ import {Actions, Scene, Router, Tab} from 'react-native-router-flux';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {TabViewAnimated, TabBar} from 'react-native-tab-view';
-import TabView from './views/TabView'
+import TabContainer from './containers/TabContainer'
 
 import rootReducer from './reducers';
 
@@ -14,7 +14,7 @@ export default class LunsjListeApp extends Component {
         return (
             <Provider store={store}>
                 <Router>
-                    <Scene key="TabView" component={TabView}/>
+                    <Scene key="TabView" component={TabContainer}/>
                 </Router>
             </Provider>
         );

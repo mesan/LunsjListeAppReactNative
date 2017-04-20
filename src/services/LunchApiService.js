@@ -49,7 +49,7 @@ const generateSignUpBody = signedUpForLunch => {
 
 const getFormattedMonth = selectedDate => {
     const month = selectedDate.getMonth() + 1; // Months are 0 - 11
-    return month < 10 ? "0" + month : month
+    return month < 10 ? "0" + month : month;
 };
 
 const getFormattedDay = selectedDate => {

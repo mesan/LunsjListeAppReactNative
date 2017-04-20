@@ -6,27 +6,19 @@ import {TabViewAnimated, TabBar} from 'react-native-tab-view';
 import Calendar from './../containers/Calendar';
 import Home from './../containers/Home';
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    page: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
-
 export default class TabView extends Component {
-    state = {
+    navigationState = {
         index: 0,
+        // index: this.props.navigationStateIndex,
         routes: [
             {key: '1', title: 'Calendar'},
             {key: '2', title: 'Profile'}
-        ],
+        ]
     };
 
     _handleChangeTab = (index) => {
+        console.log("handlechangetab");
+        this.props.setNavigationStateIndex(index);
         this.setState({index});
     };
 
@@ -37,7 +29,7 @@ export default class TabView extends Component {
     _renderScene = ({route}) => {
         switch (route.key) {
             case '1':
-                return <Calendar/>
+                return <Calendar/>;
             case '2':
                 return <Home/>;
             default:
@@ -46,13 +38,14 @@ export default class TabView extends Component {
     };
 
     render() {
+        console.log("render " + this.props.navigationStateIndex);
         return (
             <Container>
                 <Header/>
                 <Content>
                     <TabViewAnimated
                         style={styles.container}
-                        navigationState={this.state}
+                        navigationState={this.navigationState}
                         renderScene={this._renderScene}
                         renderHeader={this._renderHeader}
                         onRequestChangeTab={this._handleChangeTab}
@@ -62,3 +55,15 @@ export default class TabView extends Component {
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    page: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+});
