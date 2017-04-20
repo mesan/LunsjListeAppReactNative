@@ -1,5 +1,21 @@
 import {API_BASE_URL, AUTH_SERVICE_URL} from 'react-native-dotenv';
 
+const getEmail = token => {
+    return fetch(AUTH_SERVICE_URL + '/authenticate/valid', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            token: token
+        })
+    })
+        .then(response => response && response.ok ? response.json() : null)
+        .then(json => json ? json.userId : null)
+        .catch(e => console.error('error while validating token'));
+};
+
 export const login = (email, password) => {
     return fetch(AUTH_SERVICE_URL + '/authenticate', {
         method: 'POST',
@@ -19,6 +35,7 @@ export const login = (email, password) => {
         return response.json();
     })
     .then(json => json.token)
+    .then(token => getEmail(token).then(email => ({email, token})))
     .catch(e => {
         console.error('failed to login and get JWT', e);        
         return;

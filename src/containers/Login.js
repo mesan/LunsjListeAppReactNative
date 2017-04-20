@@ -1,24 +1,18 @@
 import { connect } from 'react-redux';
-import { login } from '../services/LunchApiService';
-import { setJwt } from '../actionCreators';
+import { Actions } from 'react-native-router-flux';
+import { authenticateUser } from '../actionCreators';
 import LoginView from '../views/LoginView';
-
-const attemptLogin = (email, password, dispatch) => {
-    login(email, password).then(result => {
-        dispatch(setJwt(result));
-    })
-    .catch(e => console.error(e));
-};
 
 const mapStateToProps = state => {
     return {
-
+        isLoading: state.auth.isLoading
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        attemptLogin: (email, password) => attemptLogin(email, password, dispatch)
+        attemptLogin: (email, password) => dispatch(authenticateUser(email, password))
+            .then(success => success ? Actions.Calendar() : null)
     }
 };
 

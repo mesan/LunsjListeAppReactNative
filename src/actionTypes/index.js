@@ -1,7 +1,7 @@
 import { SET_SELECTED_DAY } from './calendar';
-import { SET_JWT_TOKEN } from './auth';
+import { AUTHENTICATE_USER } from './auth';
 
 export {
     SET_SELECTED_DAY,
-    SET_JWT_TOKEN
+    AUTHENTICATE_USER,
 }

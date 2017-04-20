@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import {
     TextInput,
     StyleSheet,
-    Button,
+    View
 } from 'react-native';
 import {
     Container,
     Header,
     Content,
+    Button,
+    InputGroup,
+    Input,
+    Spinner
 } from 'native-base';
 
 export default class LoginView extends Component {
@@ -20,18 +24,29 @@ export default class LoginView extends Component {
     }
     onClick() {
         this.props.attemptLogin(this.state.email, this.state.password);
+        this.setState({password: ''})
     }
     render() {
         return (
             <Container>
                 <Header />
-                <Content style={styles.container}>
-                    <TextInput style={styles.email} placeholder="email" keyboardType={'email-address'} 
-                        value={this.state.email} onChangeText={text => this.setState({email: text})} />
-                    <TextInput style={styles.email} placeholder="password" secureTextEntry={true} 
-                        value={this.state.password} onChangeText={text => this.setState({password: text})} />
-                    <Button title="Logg inn" onPress={() => this.onClick()} />
-                </Content>
+                {this.props.isLoading ?
+                    <View style={styles.loadingContainer}>
+                        <Spinner color="blue" />
+                    </View>
+                    :
+                    <Content style={styles.container}>
+                        <InputGroup borderType="underline">
+                            <Input placeholder="email" keyboardType={'email-address'}
+                                   value={this.state.email} onChangeText={text => this.setState({email: text})} />
+                        </InputGroup>
+                        <InputGroup borderType="underline">
+                            <Input placeholder="password" secureTextEntry={true}
+                                   value={this.state.password} onChangeText={text => this.setState({password: text})} />
+                        </InputGroup>
+                        <Button style={styles.loginButton} block onPress={() => this.onClick()}>Login</Button>
+                    </Content>
+                }
             </Container>
         )
     }
@@ -39,14 +54,17 @@ export default class LoginView extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 150
+        paddingTop: 150,
+        margin: 10
     },
-    email: {
-        borderColor: 'grey',
-        height: 40,
-        marginLeft: 10
+    loadingContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     loginButton: {
-        backgroundColor: 'yellow'
+        marginTop: 25,
+        borderRadius: 0
     }
 });

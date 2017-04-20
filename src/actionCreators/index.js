@@ -1,7 +1,7 @@
 import { setSelectedDay } from './calendar';
-import { setJwt } from './auth';
+import { authenticateUser } from './auth';
 
 export {
     setSelectedDay,
-    setJwt
+    authenticateUser,
 }
