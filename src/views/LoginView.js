@@ -24,7 +24,7 @@ export default class LoginView extends Component {
     }
     onClick() {
         this.props.attemptLogin(this.state.email, this.state.password);
-        this.setState({password: ''})
+        this.setState({password: ''});
     }
     render() {
         return (
