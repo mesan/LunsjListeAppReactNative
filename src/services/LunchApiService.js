@@ -28,35 +28,36 @@ export const login = (email, password) => {
             password: password
         })
     })
-    .then(response => {
-        if (!response || !response.ok) {
-            throw new Error('response was invalid', response);
-        }
-        return response.json();
-    })
-    .then(json => json.token)
-    .then(token => getEmail(token).then(email => ({email, token})))
-    .catch(e => {
-        console.error('failed to login and get JWT', e);        
-        return;
-    });
+        .then(response => {
+            if (!response || !response.ok) {
+                throw new Error('response was invalid', response);
+            }
+            return response.json();
+        })
+        .then(json => json.token)
+        .then(token => getEmail(token).then(email => ({email, token})))
+        .catch(e => {
+            console.error('failed to login and get JWT', e);
+            return;
+        });
 };
 
 export const fetchUserSignedUpForLunch = (selectedDate, user) => {
     validateInput(selectedDate, user);
 
     const url = buildUrl(selectedDate, user);
-    console.debug('Checking if user', user, 'is signed up for lunch on date: ', selectedDate);
+    console.debug('Checking if user', user, 'is signed up for lunch on date: ', selectedDate + '. url: ' + url);
 
     return fetch(url, {
         method: 'GET'
-    }).then(response => {
-        if(!response.ok){
-            return false;
-        }
+    }).then(response => response.json())
+        .then(response => {
+            if (!response) {
+                return false;
+            }
 
-        return extractUserIsSignedUp(response);
-    });
+            return extractUserIsSignedUp(response);
+        });
 };
 
 export const signUpForLunch = (selectedDate, user, status) => {
@@ -100,7 +101,7 @@ const getFormattedDay = selectedDate => {
 };
 
 const extractUserIsSignedUp = response => {
-    return JSON.parse(response._bodyText).signedUpForLunch;
+    return response.signedUpForLunch;
 };
 
 const validateInput = (selectedDate, user) => {
@@ -108,7 +109,7 @@ const validateInput = (selectedDate, user) => {
         throw Error('Could not check if signed up for lunch. Date must be defined.');
     }
 
-    if (!user){
+    if (!user) {
         throw Error('Could not check if signed up for lunch. User must be defined.');
     }
 };
