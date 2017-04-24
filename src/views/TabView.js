@@ -29,7 +29,6 @@ export default class TabView extends Component {
             case '1':
                 return <Calendar/>;
             case '2':
-            case '3':
                 return <Home/>;
             default:
                 return null;
