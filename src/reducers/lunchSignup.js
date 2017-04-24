@@ -9,7 +9,6 @@ export default (state = defaultState, action) => {
     switch (action.type) {
         case IS_SIGNED_UP_FOR_LUNCH: {
             temp.isSignedUpForLunch = action.isSignedUpForLunch;
-            console.log("reducer isSignedUpForLunch: ", temp.isSignedUpForLunch);
             return temp;
         }
         default: return temp;
