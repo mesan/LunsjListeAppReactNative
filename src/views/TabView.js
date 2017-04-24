@@ -7,19 +7,17 @@ import Calendar from './../containers/Calendar';
 import Home from './../containers/Home';
 
 export default class TabView extends Component {
-    navigationState = {
-        // index: 0,
-        index: this.props.navigationStateIndex,
+    navigationState = newIndex => ({
+        index: newIndex ? newIndex : 0,
         routes: [
             {key: '1', title: 'Calendar'},
             {key: '2', title: 'Profile'}
         ]
-    };
+    });
+
 
     _handleChangeTab = (index) => {
-        console.log("handlechangetab");
         this.props.setNavigationStateIndex(index);
-        // this.setState({index});
     };
 
     _renderHeader = (props) => {
@@ -31,6 +29,7 @@ export default class TabView extends Component {
             case '1':
                 return <Calendar/>;
             case '2':
+            case '3':
                 return <Home/>;
             default:
                 return null;
@@ -38,14 +37,13 @@ export default class TabView extends Component {
     };
 
     render() {
-        console.log("render " + this.props.navigationStateIndex);
         return (
             <Container>
                 <Header/>
                 <Content>
                     <TabViewAnimated
                         style={styles.container}
-                        navigationState={this.navigationState}
+                        navigationState={this.navigationState(this.props.navigationStateIndex)}
                         renderScene={this._renderScene}
                         renderHeader={this._renderHeader}
                         onRequestChangeTab={this._handleChangeTab}

@@ -12,9 +12,7 @@ export default class CalendarView extends Component {
 
     handleDateChange(date) {
         this.props.setSelectedDate(date);
-        let newIndex = this.props.navigationStateIndex == 1? 0 : 1;
-        this.props.setNavigationStateIndex(newIndex);
-        // Actions.Home();
+        this.props.setNavigationStateIndex(1);
     }
 
     render() {
@@ -31,7 +29,3 @@ export default class CalendarView extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-
-});
