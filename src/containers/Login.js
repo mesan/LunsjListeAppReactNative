@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         attemptLogin: (email, password) => dispatch(authenticateUser(email, password))
-            .then(success => success ? Actions.Calendar() : null)
+            .then(success => success ? Actions.TabView() : null)
     }
 };
 

@@ -13,7 +13,7 @@ export default class CalendarView extends Component {
     handleDateChange(date) {
         // Only change tab if a day is changed, not if a month is changed
         if (date.getMonth() === this.props.selectedDate.getMonth()) {
-            this.props.setNavigationStateIndex(1);
+            Actions.Home();
         }
         this.props.setSelectedDate(date);
     }

@@ -28,8 +28,6 @@ export default class TabView extends Component {
         switch (route.key) {
             case '1':
                 return <Calendar/>;
-            case '2':
-                return <Home/>;
             default:
                 return null;
         }

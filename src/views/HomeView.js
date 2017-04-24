@@ -45,6 +45,7 @@ export default class Home extends Component {
         } = this.props;
         return (
             <Container>
+                <Header/>
                 <Content>
                     <LunchDateView
                         username={username}
