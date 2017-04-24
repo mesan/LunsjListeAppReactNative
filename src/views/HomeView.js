@@ -10,7 +10,6 @@ export default class Home extends Component {
     render() {
         return (
             <Container>
-                <Header />
                 <Content>
                     <LunchDateView
                         selectedDate={this.props.selectedDate}
