@@ -17,9 +17,10 @@ const getButtonStyle = isSignedUpForLunch => {
 
 export default class Home extends Component {
     componentDidMount(){
-        const {fetchUserSignedUpForLunch, selectedDate, setSignedUp, username} = this.props;
+        const {
+            fetchUserSignedUpForLunch, selectedDate, setSignedUp, username
+        } = this.props;
 
-        console.debug('username', username);
         fetchUserSignedUpForLunch(selectedDate, username)
             .then(result => setSignedUp(result))
             .catch(e => console.error('Error while checking if signed up: ', e));
@@ -69,7 +70,8 @@ export default class Home extends Component {
 
 const styles = StyleSheet.create({
     button: {
-        height: 50
+        height: 55,
+        borderRadius: 0
     },
     buttonGreen: {
         backgroundColor: '#73D6C5'
