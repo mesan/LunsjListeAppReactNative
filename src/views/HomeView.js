@@ -5,7 +5,6 @@ import {
     Header,
     Content,
     Footer,
-    FooterTab,
     Button,
     Text
 } from 'native-base';
