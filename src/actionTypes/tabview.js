@@ -1,0 +1,1 @@
+export const NATIVATIONSTATE_INDEX = 0;
