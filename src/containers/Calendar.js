@@ -5,7 +5,8 @@ import {setNavigationStateIndex} from '../actionCreators/tabview'
 import CalendarView from '../views/CalendarView';
 
 const mapStateToProps = state => ({
-    selectedDate: state.calendar.selectedDate
+    selectedDate: state.calendar.selectedDate,
+    navigationStateIndex: state.tab.navigationStateIndex
 });
 
 const mapDispatchToProps = dispatch => ({

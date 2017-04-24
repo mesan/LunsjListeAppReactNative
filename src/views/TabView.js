@@ -8,8 +8,8 @@ import Home from './../containers/Home';
 
 export default class TabView extends Component {
     navigationState = {
-        index: 0,
-        // index: this.props.navigationStateIndex,
+        // index: 0,
+        index: this.props.navigationStateIndex,
         routes: [
             {key: '1', title: 'Calendar'},
             {key: '2', title: 'Profile'}
@@ -19,7 +19,7 @@ export default class TabView extends Component {
     _handleChangeTab = (index) => {
         console.log("handlechangetab");
         this.props.setNavigationStateIndex(index);
-        this.setState({index});
+        // this.setState({index});
     };
 
     _renderHeader = (props) => {
@@ -55,7 +55,6 @@ export default class TabView extends Component {
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {

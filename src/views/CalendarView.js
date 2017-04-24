@@ -12,7 +12,8 @@ export default class CalendarView extends Component {
 
     handleDateChange(date) {
         this.props.setSelectedDate(date);
-        this.props.setNavigationStateIndex(1);
+        let newIndex = this.props.navigationStateIndex == 1? 0 : 1;
+        this.props.setNavigationStateIndex(newIndex);
         // Actions.Home();
     }
 

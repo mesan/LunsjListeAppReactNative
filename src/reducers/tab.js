@@ -9,7 +9,7 @@ export default (state = defaultState, action) => {
     switch (action.type) {
         case NATIVATIONSTATE_INDEX: {
             temp.navigationStateIndex = action.navigationStateIndex;
-            console.debug("navigationState: ", temp.navigationStateIndex);
+            console.debug("navigationState reducer: ", temp.navigationStateIndex);
             return temp;
         }
         default: return temp;
