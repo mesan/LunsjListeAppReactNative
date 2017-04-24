@@ -7,7 +7,8 @@ import HomeView from '../views/HomeView';
 const mapStateToProps = state => {
     return {
         selectedDate: state.calendar.selectedDate,
-        isSignedUpForLunch: state.lunchSignup.isSignedUpForLunch
+        isSignedUpForLunch: state.lunchSignup.isSignedUpForLunch,
+        username: 'fredrickb'
     }
 };
 
