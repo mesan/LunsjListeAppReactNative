@@ -23,6 +23,8 @@ allprojects {
     }
 }
 
+// This is a hack to make some of the npm dependencies run on 2.23
+// see: https://github.com/oblador/react-native-vector-icons/issues/534
 subprojects {
     ext {
         compileSdk = 23
