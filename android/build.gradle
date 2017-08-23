@@ -22,3 +22,26 @@ allprojects {
         }
     }
 }
+
+subprojects {
+    ext {
+        compileSdk = 23
+        buildTools = "23.0.1"
+        minSdk = 16
+        targetSdk = 23
+    }
+
+    afterEvaluate { project ->
+        if (!project.name.equalsIgnoreCase("app")
+                && project.hasProperty("android")) {
+            android {
+                compileSdkVersion compileSdk
+                buildToolsVersion buildTools
+                defaultConfig {
+                    minSdkVersion minSdk
+                    targetSdkVersion targetSdk
+                }
+            }
+        }
+    }
+}

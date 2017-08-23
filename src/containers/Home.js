@@ -8,7 +8,7 @@ const mapStateToProps = state => {
     return {
         selectedDate: state.calendar.selectedDate,
         isSignedUpForLunch: state.lunchSignup.isSignedUpForLunch,
-        username: state.auth.username
+        username: "idarv"// state.auth.username
     }
 };
 
