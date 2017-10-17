@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import {Container, Content, Card, CardItem, Text} from 'native-base';
 import { StyleSheet } from 'react-native';
+import moment from 'moment/min/moment-with-locales'
 
 export default class LunchDateView extends Component {
-
+    componentWillMount() {
+        {moment.locale("nb")}
+    }
     render() {
         const {selectedDate} = this.props;
         return (
@@ -14,7 +17,7 @@ export default class LunchDateView extends Component {
                         {selectedDate.getDate()}
                     </Text>
                     <Text style={styles.date_header}>
-                        {selectedDate.toLocaleString("nb", {month: "long"})}
+                        {moment().format("MMMM")}
                     </Text>
                     <Card>
                         <CardItem>
@@ -25,7 +28,7 @@ export default class LunchDateView extends Component {
                                 Kyllingsalat
                             </Text>
                             <Text>
-                                Thai Suppe (sukkerfri, vegansk)
+                                Thai Suppe
                             </Text>
                             <Text>
                                 Brød m/ pålegg
