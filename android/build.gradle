@@ -22,3 +22,28 @@ allprojects {
         }
     }
 }
+
+// This is a hack to make some of the npm dependencies run on 2.23
+// see: https://github.com/oblador/react-native-vector-icons/issues/534
+subprojects {
+    ext {
+        compileSdk = 23
+        buildTools = "23.0.1"
+        minSdk = 16
+        targetSdk = 23
+    }
+
+    afterEvaluate { project ->
+        if (!project.name.equalsIgnoreCase("app")
+                && project.hasProperty("android")) {
+            android {
+                compileSdkVersion compileSdk
+                buildToolsVersion buildTools
+                defaultConfig {
+                    minSdkVersion minSdk
+                    targetSdkVersion targetSdk
+                }
+            }
+        }
+    }
+}

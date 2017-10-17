@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 import {Container, Header, Content} from 'native-base'
-import {TabViewAnimated, TabBar} from 'react-native-tab-view';
+import {TabViewAnimated, TabBar, TabViewPagerPan} from 'react-native-tab-view';
 
 import Calendar from './../containers/Calendar';
 import Home from './../containers/Home';
@@ -17,6 +17,7 @@ export default class TabView extends Component {
 
 
     _handleChangeTab = (index) => {
+        console.log("_handleChangeTab(" + index + ")");
         this.props.setNavigationStateIndex(index);
     };
 
@@ -33,6 +34,10 @@ export default class TabView extends Component {
         }
     };
 
+    _renderPager = props => {
+        return <TabViewPagerPan {...props} />;
+    };
+
     render() {
         return (
             <Container>
@@ -44,6 +49,7 @@ export default class TabView extends Component {
                         renderScene={this._renderScene}
                         renderHeader={this._renderHeader}
                         onRequestChangeTab={this._handleChangeTab}
+                        renderPager={this._renderPager}
                     />
                 </Content>
             </Container>

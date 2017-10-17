@@ -1,5 +1,4 @@
 import {API_BASE_URL, AUTH_SERVICE_URL} from 'react-native-dotenv';
-
 const getEmail = token => {
     return fetch(AUTH_SERVICE_URL + '/authenticate/valid', {
         method: 'POST',
