@@ -4,6 +4,7 @@ import {Container, Header, Content} from 'native-base'
 import {TabViewAnimated, TabBar, TabViewPagerPan} from 'react-native-tab-view';
 
 import Calendar from './../containers/Calendar';
+import Profile from './../containers/Profile';
 import Home from './../containers/Home';
 
 export default class TabView extends Component {
@@ -30,7 +31,7 @@ export default class TabView extends Component {
             case '1':
                 return <Calendar/>;
             default:
-                return null;
+                return <Profile/>;
         }
     };
 

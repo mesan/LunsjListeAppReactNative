@@ -8,6 +8,7 @@ import {TabViewAnimated, TabBar} from 'react-native-tab-view';
 import TabContainer from './containers/TabContainer';
 import LoginContainer from './containers/Login';
 import HomeContainer from './containers/Home';
+import ProfileContainer from './containers/Profile';
 import rootReducer from './reducers';
 
 const logger = createLogger();
@@ -20,6 +21,7 @@ export default class LunsjListeApp extends Component {
                 <Router>
                     <Scene key="TabView" component={TabContainer} renderBackButton={() => (null)} />
                     <Scene key="Home" component={HomeContainer} />
+                    <Scene key="Profile" component={ProfileContainer}/>
                     {/*<Scene key="Login" component={LoginContainer} initial={true} />*/}
                 </Router>
             </Provider>
